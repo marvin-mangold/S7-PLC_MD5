@@ -34,8 +34,7 @@ steps:
 	-Step 10: Produce "hexdigest"
 
   
-<img width="1284" height="598" alt="MD5" src="https://github.com/user-attachments/assets/902d03aa-cf0c-4126-b6cd-a82d9bfbc13f" />
-
+![MD5](https://github.com/user-attachments/assets/902d03aa-cf0c-4126-b6cd-a82d9bfbc13f)
 
 
 
