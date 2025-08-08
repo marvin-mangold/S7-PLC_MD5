@@ -1,5 +1,5 @@
-# S7-PLC_SHA1
-## SHA1 encryption FC for Siemens PLC S7-1200 and S7-1500
+# S7-PLC_MD5
+## MD5 encryption FC for Siemens PLC S7-1200 and S7-1500
 
 Sha1 is an cryptographic algorithm that takes a string of any length and reduces it to a unique fixed length string. 
 In this implmementation the string length is limited to a maximum length of 254 characters (String[254] - 2032 bit).
