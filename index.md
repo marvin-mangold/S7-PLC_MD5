@@ -1,7 +1,7 @@
-# S7-PLC_SHA1
-## SHA1 encryption FC for Siemens PLC S7-1200 and S7-1500
+# S7-PLC_MD5
+## MD5 encryption FC for Siemens PLC S7-1200 and S7-1500
 
-Sha1 is an cryptographic algorithm that takes a string of any length and reduces it to a unique fixed length string. 
+The MD5 message-digest algorithm is a widely used hash function producing a 128-bit hash value.
 In this implmementation the string length is limited to a maximum length of 254 characters (String[254] - 2032 bit).
 
 depending on the input "inputmode" different inputformats are used
@@ -11,29 +11,27 @@ depending on the input "inputmode" different inputformats are used
 
 depending on the input "outputmode" different outputformats are available
 
-	-1 The digest ouput is the final hash value as a string of H0 - H4 (Array [0..19] of Byte)
-	-2 The hexdigest output is the final hash value as a hexadecimal string of H0 - H4 (40 bytes string)
+	-1 The digest ouput is the final hash value as bytes of A - D (Array [0..15] of Byte)
+	-2 The hexdigest output is the final hash value as a hexadecimal string of A - D (32 bytes string)
 	-3 Both 1 and 2
 
-For further informations take a look at RFC 3174.
-Sha1 is not considered anymore as a secure hash type!
+For further informations take a look at RFC 1321.
+MD5 is not considered anymore as a secure hash type!
 
 steps:
 
-	-Step 00: Initialize variables H0 - H4
-	-Step 01: Convert message to Bytes
-	-Step 02: Appending padding Bits
+	-Step 00: Initialize variables
+	-Step 01: Convert and save message in data as Bytes
+	-Step 02: Appending padding Bits 
 	-Step 03: Append 64 Bit containg the original message length in Bits
 	-Step 04: Get the amount of chunks data (chunk = 512 Bit)
-	-FOR every chunk do Step 05 - Step 09:
-	    -Step 05: Break the chunk into 16 DWords
-	    -Step 06: Extend chunk to 80 DWords
-	    -Step 07: Initialize variables A - E
-	    -Step 08: Do some bitwise operations on the 80 chunk DWords
-	    -Step 09: Save the chunk's hash to result for the next chunk
-	-Step 10: Produce "digest"
-	-Step 11: Produce "hexdigest"
+	-FOR every chunk do Step 05 - Step 08:
+	    -Step 05: Save variables for later use
+	    -Step 06: Break the chunk into 16 DWords
+	    -Step 07: Do some bitwise operations on the 16 chunk DWords in 64 rounds
+	    -Step 08: Save the chunk's hash TO result FOR the next chunk 
+	-Step 09: Produce "digest"
+	-Step 10: Produce "hexdigest"
+
   
-![SHA1](https://github.com/user-attachments/assets/2111ad81-4ee9-48f0-b39c-312c828c9f75)
-
-
+<img width="1284" height="598" alt="MD5" src="https://github.com/user-attachments/assets/902d03aa-cf0c-4126-b6cd-a82d9bfbc13f" />
